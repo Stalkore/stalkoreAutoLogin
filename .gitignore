@@ -1,0 +1,36 @@
+# Rust outputs, including standalone packages.
+AGENTS.md
+**/target/
+*.pdb
+*.ilk
+*.exp
+*.dll
+*.exe
+*.lib
+
+# Process data and local diagnostics stay outside the source repository.
+*.log
+*.dmp
+*.image
+client-*.bin
+*-memory.bin
+*.idb
+*.i64
+/captures/
+/local/
+
+# Local login configuration and environment overrides stay outside Git.
+**/autoLogin.ini
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+.vs/
+.idea/
+*.suo
+*.user
+.DS_Store
+Thumbs.db
+Desktop.ini

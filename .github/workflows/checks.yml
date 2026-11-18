@@ -1,0 +1,43 @@
+name: Checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  policy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: stalkoreAutoLogin
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: stalkoreAutoLogin
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@39008827e6b4319a349e9a42dfc90579dd25f1ca
+        with:
+          toolchain: stable
+          components: rustfmt, clippy
+      - run: cargo fmt --all -- --check
+      - run: cargo test --locked --jobs 1
+      - run: cargo clippy --locked --all-targets --jobs 1 -- -D warnings
+  windows-x86:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: stalkoreAutoLogin/sdk-plugin
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: stalkoreAutoLogin
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@39008827e6b4319a349e9a42dfc90579dd25f1ca
+        with:
+          toolchain: stable
+          targets: i686-pc-windows-msvc
+          components: rustfmt, clippy
+      - run: cargo fmt --all -- --check
+      - run: cargo test --locked --target i686-pc-windows-msvc --jobs 1
+      - run: cargo clippy --locked --all-targets --target i686-pc-windows-msvc --jobs 1 -- -D warnings

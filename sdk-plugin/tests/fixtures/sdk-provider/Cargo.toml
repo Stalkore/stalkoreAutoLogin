@@ -1,0 +1,10 @@
+[package]
+name = "stalkore-sdk-api-provider-fixture"
+version = "0.1.0"
+edition = "2021"
+publish = false
+[lib]
+name = "sdk"
+crate-type = ["rlib", "cdylib"]
+[dependencies]
+stalkore-sdk-api = { git = "https://github.com/Stalkore/stalkoreSdkApi.git", rev = "e0d5a3c9ba07651d1465ea22772f3d93171a76ad" }

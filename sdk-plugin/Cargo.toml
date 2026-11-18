@@ -1,0 +1,23 @@
+[package]
+name = "stalkore-autologin-plugin"
+version = "0.1.0"
+edition = "2021"
+description = "Login policy plugin using stalkoreSdkApi client services"
+repository = "https://github.com/Stalkore/stalkoreAutoLogin"
+license = "MIT"
+publish = false
+
+[lib]
+name = "autoLogin"
+crate-type = ["cdylib", "rlib"]
+
+[lints.rust]
+non_snake_case = "allow"
+
+[target.'cfg(all(windows, target_arch = "x86"))'.dependencies]
+stalkore-autologin = { path = ".." }
+stalkore-sdk-api = { git = "https://github.com/Stalkore/stalkoreSdkApi.git", rev = "e0d5a3c9ba07651d1465ea22772f3d93171a76ad" }
+windows-sys = { version = "0.61.2", features = ["Win32_Foundation", "Win32_System_LibraryLoader", "Win32_System_Threading", "Win32_System_SystemInformation"] }
+
+[dev-dependencies]
+stalkore-sdk-api-provider-fixture = { path = "tests/fixtures/sdk-provider" }
