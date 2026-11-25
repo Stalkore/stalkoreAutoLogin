@@ -16,9 +16,14 @@ map-entry record below remains valid only for its tested executable. Follow the
 rebuilt stack reaches map mode and completes the required transition checks.
 
 The private adapter's source catalog has since been migrated and passes x86
-source checks. The SDK still pins its previous adapter revision, and the new
-runtime has not been installed or validated through a live login. The plugin's
-policy and public API remain unchanged.
+source checks. The SDK manifest and lockfile now pin adapter revision
+`715f6d7`; the new runtime has not been installed or validated through a live
+login. The plugin's policy and public API remain unchanged.
+
+On 2026-11-25, the portable policy passed 26 tests; the x86 plugin passed its
+unit test and two integration tests. All-target Clippy and the release
+`autoLogin.dll` build also passed. These checks did not install the plugin or
+exercise the updated client.
 
 ## File-only login reached map mode — 2026-11-18
 

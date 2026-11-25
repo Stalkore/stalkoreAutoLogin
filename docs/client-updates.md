@@ -48,6 +48,7 @@ cargo fmt --all -- --check
 cargo test --locked --target i686-pc-windows-msvc --jobs 1
 cargo clippy --locked --all-targets --target i686-pc-windows-msvc --jobs 1 -- -D warnings
 cargo build --locked --release --target i686-pc-windows-msvc --jobs 1 --lib
+if ($LASTEXITCODE -ne 0) { throw 'AutoLogin plugin build failed.' }
 ```
 
 The output is `sdk-plugin/target/i686-pc-windows-msvc/release/autoLogin.dll`.
