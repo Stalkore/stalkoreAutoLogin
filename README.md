@@ -15,7 +15,7 @@ operations and scheduling through the public
 
 ## Configure once, launch normally
 
-Create `SDK/autoLogin.ini` beside `autoLogin.dll` from the
+Create `Plugins/autoLogin.ini` beside `autoLogin.dll` in the combined layout from the
 [empty example](sdk-plugin/autoLogin.example.ini), retain its automation settings
 and fill the local login section:
 

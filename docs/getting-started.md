@@ -23,6 +23,37 @@ CRT settings. The DLL is `target/i686-pc-windows-msvc/release/autoLogin.dll`.
 
 Close the game and launcher before replacing a loaded DLL. The layout is:
 
+### Combined Forwarder layout
+
+Build against the updated local SDK API checkout so `SdkApi::connect()` can
+discover the API export in the generated carrier. This is a one-time plugin
+rebuild when migrating from the separate `sdk.dll` layout. From `sdk-plugin`:
+
+```powershell
+cargo --config 'patch."https://github.com/Stalkore/stalkoreSdkApi.git".stalkore-sdk-api.path="D:/GitHub/Stalkore/stalkoreSdkApi"' build --release --target i686-pc-windows-msvc --jobs 1 --lib
+if ($LASTEXITCODE -ne 0) { throw 'Plugin build failed.' }
+```
+
+```text
+client/
+├── D3DX9_43.dll             generated Forwarder with embedded SDK
+├── plugins.json             {"plugins":["Plugins/autoLogin.dll"]}
+└── Plugins/
+    ├── autoLogin.dll
+    ├── autoLogin.ini
+    └── autoLogin.log
+```
+
+The INI and log follow the plugin DLL, so their names and contents remain
+unchanged. Keep `sdk.dll` out of this installation. Once the updated SDK API
+revision is published and this plugin pins it, ordinary `--locked` builds can
+replace the local patch command. The runtime still calls the fixed
+`stalkore_sdk_on_startup_v1` export.
+
+### Separate SDK compatibility layout
+
+The following commands describe the older two-DLL installation:
+
 ```text
 client/
 ├── D3DX9_43.dll              Forwarder
@@ -56,7 +87,7 @@ The runtime configuration retains the same path-only schema:
 {"plugins":["SDK/autoLogin.dll"]}
 ```
 
-Use the [SDK example](../sdk-plugin/stalkore-sdk.example.json). The host calls
+Use the [SDK example](https://github.com/Stalkore/stalkoreSdk/blob/main/fixtures/plugins.json). The host calls
 `stalkore_sdk_on_startup_v1`; the old callback name remains an alias. No arbitrary
 entrypoint, extra executable or separate client-adapter DLL is installed.
 
