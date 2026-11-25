@@ -2,7 +2,26 @@
 
 [Documentation](README.md) · [Configuration](configuration.md) · [Tests](testing.md)
 
-## Current executable update — 2026-11-24
+## Updated executable reached map — 2026-11-25
+
+The user rebuilt and installed the reviewed SDK and AutoLogin DLLs, retained
+the local INI, and launched after clearing inherited `RO_*` overrides in that
+PowerShell. The source of each input was not logged. The SDK accepted the
+plugin startup callback; the AutoLogin log then recorded SSO request, server
+selection, existing-PIN confirmation, character selection and the
+`map mode reached` event at 09:35:38 local time. The SDK separately observed
+map mode with an open connection. The process remained alive for more than two
+minutes. A user-provided image showed the rendered map after the configured window
+shortcut restored visibility.
+
+The first appearance of a closed window came from a separately configured
+visibility plugin starting hidden; it did not terminate the client. This run
+validates startup through visible map entry for the reviewed executable and
+DLL set. Portal transition, disconnect recovery and a longer authenticated
+session remain separate acceptance stages. Follow the
+[client update checklist](client-updates.md) on the next executable change.
+
+## Compatibility rejection before adapter update — 2026-11-24
 
 The installed plugin reached SDK startup but recorded `unsupported client
 executable`; the SDK recorded the plugin's nonzero startup status for the same
@@ -17,8 +36,8 @@ rebuilt stack reaches map mode and completes the required transition checks.
 
 The private adapter's source catalog has since been migrated and passes x86
 source checks. The SDK manifest and lockfile now pin adapter revision
-`715f6d7`; the new runtime has not been installed or validated through a live
-login. The plugin's policy and public API remain unchanged.
+`715f6d7`; the later 2026-11-25 run above reached map. The plugin's policy
+and public API remain unchanged.
 
 On 2026-11-25, the portable policy passed 26 tests; the x86 plugin passed its
 unit test and two integration tests. All-target Clippy and the release

@@ -7,6 +7,12 @@ client addresses, native layouts or executable fingerprints. A client update
 should therefore be handled at the SDK adapter boundary before changing this
 plugin.
 
+For a weekly check, compare the executable's identity with the last validated
+build before rebuilding anything. Preserve the local `autoLogin.ini`, keep
+credential values out of logs and Git, and follow the staged live checks below.
+An unchanged executable and a healthy login need no plugin rebuild merely
+because the launcher patched unrelated files.
+
 ## Recognize a compatibility failure
 
 The typical update failure is:

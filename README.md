@@ -62,11 +62,11 @@ overwriting local settings.
 | Scheduling | One SDK-owned dispatcher; no second native hook |
 | Compatibility | Stable DLL/configuration filenames and startup/status aliases |
 
-A consumer-built stack reached map mode using only `autoLogin.ini` on
-**2026-11-18 at 19:00:33.053 (UTC−03:00), on attempt 1/3**. Environment-based
-startup was observed separately. The [validation record](docs/validation.md)
-identifies the tested binary and distinguishes those observations from tests of
-the subsequent source reorganization.
+A consumer-built stack reached map mode with file-only login inputs on
+2026-11-18. After the executable and private adapter changed, a rebuilt SDK
+and AutoLogin stack again reached a visible map on 2026-11-25. The
+[validation record](docs/validation.md) separates these exact-build
+observations from source tests and pending portal/recovery checks.
 
 ## Read by task
 
@@ -81,7 +81,7 @@ the subsequent source reorganization.
 | [Migration](docs/migration.md) | Organization, crate layout and retained runtime contracts |
 | [Contributing](docs/contributing.md) | Design principles, verification and source hygiene |
 | [Validation](docs/validation.md) | Inspect live evidence and its limits |
-| [Client updates](docs/client-updates.md) | Restore adapter compatibility and validate login after an executable update |
+| [Weekly maintenance and client updates](docs/client-updates.md) | Check identity, restore adapter compatibility and validate login after an update |
 
 The root crate is `stalkore-autologin`; `sdk-plugin/` produces `autoLogin.dll`
 from `stalkore-autologin-plugin`. No plugin executable or extra adapter DLL is
