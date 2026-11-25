@@ -30,7 +30,7 @@ discover the API export in the generated carrier. This is a one-time plugin
 rebuild when migrating from the separate `sdk.dll` layout. From `sdk-plugin`:
 
 ```powershell
-cargo --config 'patch."https://github.com/Stalkore/stalkoreSdkApi.git".stalkore-sdk-api.path="D:/GitHub/Stalkore/stalkoreSdkApi"' build --release --target i686-pc-windows-msvc --jobs 1 --lib
+cargo --config 'patch.\"https://github.com/Stalkore/stalkoreSdkApi.git\".stalkore-sdk-api.path=\"D:/GitHub/Stalkore/stalkoreSdkApi\"' build --release --target i686-pc-windows-msvc --jobs 1 --lib
 if ($LASTEXITCODE -ne 0) { throw 'Plugin build failed.' }
 ```
 
