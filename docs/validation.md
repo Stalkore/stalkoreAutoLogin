@@ -2,6 +2,24 @@
 
 [Documentation](README.md) · [Configuration](configuration.md) · [Tests](testing.md)
 
+## Current executable update — 2026-11-24
+
+The installed plugin reached SDK startup but recorded `unsupported client
+executable`; the SDK recorded the plugin's nonzero startup status for the same
+process. The private adapter's compiled executable identity differs from the
+updated installed binary. No credential, INI or retry failure preceded the
+rejection.
+
+This is a confirmed compatibility failure at the adapter boundary. The earlier
+map-entry record below remains valid only for its tested executable. Follow the
+[client update guide](client-updates.md), then add a new record only after the
+rebuilt stack reaches map mode and completes the required transition checks.
+
+The private adapter's source catalog has since been migrated and passes x86
+source checks. The SDK still pins its previous adapter revision, and the new
+runtime has not been installed or validated through a live login. The plugin's
+policy and public API remain unchanged.
+
 ## File-only login reached map mode — 2026-11-18
 
 The consumer rebuilt/copied the plugin and opened a new launcher using

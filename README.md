@@ -81,6 +81,7 @@ the subsequent source reorganization.
 | [Migration](docs/migration.md) | Organization, crate layout and retained runtime contracts |
 | [Contributing](docs/contributing.md) | Design principles, verification and source hygiene |
 | [Validation](docs/validation.md) | Inspect live evidence and its limits |
+| [Client updates](docs/client-updates.md) | Restore adapter compatibility and validate login after an executable update |
 
 The root crate is `stalkore-autologin`; `sdk-plugin/` produces `autoLogin.dll`
 from `stalkore-autologin-plugin`. No plugin executable or extra adapter DLL is

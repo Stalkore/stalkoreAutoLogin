@@ -15,3 +15,4 @@
 2. [Tests](testing.md): checks to run for each affected path.
 3. [Migration](migration.md): canonical names, retained exports and configuration upgrades.
 4. [Contributing](contributing.md): scope, source ownership and review expectations.
+5. [Client update maintenance](client-updates.md): diagnose compatibility rejection and revalidate the native flow after an update.
