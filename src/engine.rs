@@ -151,6 +151,8 @@ impl LoginPolicy {
             self.last_progress_revision = Some(snapshot.progress_revision);
             self.last_observed_phase = Some(snapshot.phase);
         }
+        // Native actions can finish asynchronously. One action per observed
+        // revision prevents a fast SDK tick from submitting it again.
         if self.dispatched_revision == Some(snapshot.progress_revision) {
             return;
         }

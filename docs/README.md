@@ -2,6 +2,18 @@
 
 [Project overview](../README.md)
 
+## Follow one login decision
+
+Read [`configuration`](../src/configuration.rs) →
+[`LoginPolicy::tick`](../src/engine.rs) →
+[`dispatch_action`](../src/engine/dispatch.rs) →
+[`SDK callback`](../sdk-plugin/src/runtime/events.rs). The policy decides
+*when* to act; the SDK and its private adapter decide *how* to perform a
+guarded client operation. Follow a recovery path in
+[`recovery`](../src/engine/recovery.rs) too. The [architecture](architecture.md)
+explains the boundary; [validation](validation.md) separates earlier map
+observations from current client-update acceptance.
+
 ## Install and use
 
 1. [Quick start](getting-started.md): build the DLL and place it in the SDK folder.
